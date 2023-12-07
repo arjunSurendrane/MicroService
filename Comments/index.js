@@ -26,7 +26,7 @@ app.post("/posts/:id/comments", async (req, res) => {
   const comments = commentsByPostid[postId] || [];
   comments.push({ id, content });
   commentsByPostid[postId] = comments;
-  await axios.post("http://localhost:4002/events", {
+  await axios.post("http://event-bus-srv:4002/events", {
     type: "commentType",
     data: { id, content, postId },
   });

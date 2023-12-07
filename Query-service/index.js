@@ -29,9 +29,9 @@ app.get("/posts", (req, res) => {
   res.status(200).json({ posts });
 });
 
-app.listen(3000, async () => {
-  console.log("App running on port 3000...");
-  const res = await axios.get("http://localhost:4002/events");
+app.listen(5000, async () => {
+  console.log("App running on port 5000...");
+  const res = await axios.get("http://event-bus-srv:4002/events");
   for (let event in res.data) {
     const { type, data } = event;
     handlingEvents(type, data);
